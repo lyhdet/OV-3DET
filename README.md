@@ -17,7 +17,7 @@
 
 
 ## Installation
-See [installation instructions](Prepare_ScanNet.md).
+See [installation instructions](Phase 1/Prepare_ScanNet.md).
 
 
 ##  Training OV-3DET

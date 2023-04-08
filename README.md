@@ -1,6 +1,8 @@
 # OV-3DET: Open-Vocabulary Point-Cloud Object Detection without 3D Annotation
 
-**OV-3DET**: A **O**pen **V**ocabulary **3**D **DET**ector. [Paper](https://arxiv.org/abs/2304.00788) | [BibTeX](#citation)
+**OV-3DET**: A **O**pen **V**ocabulary **3**D **DET**ector. 
+
+[Paper](https://arxiv.org/abs/2304.00788) | [BibTeX](#citation)
 
  <p align="center"> <img src='Assets/overview.png' align="center" height="300px"> </p>
 

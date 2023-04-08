@@ -1,6 +1,7 @@
 # OV-3DET: Open-Vocabulary Point-Cloud Object Detection without 3D Annotation
 
 Accepted to CVPR2023. &emsp;
+[Paper](https://arxiv.org/abs/2304.00788) | BibTeX
 
 ###  Running OV-3DET
 
@@ -38,3 +39,17 @@ This codebase is modified base on ***3DETR*** [1], ***CLIP*** [2] and ***Detic**
 [2] Learning transferable visual models from natural language supervision. *ICML*. 2021.
 
 [3] Detecting twenty-thousand classes using image-level supervision. *ECCV*. 2022.
+
+&emsp;
+### Citation
+
+If you find this repository helpful, please consider citing our work:
+
+```
+@article{lu2023open,
+  title={Open-Vocabulary Point-Cloud Object Detection without 3D Annotation},
+  author={Lu, Yuheng and Xu, Chenfeng and Wei, Xiaobao and Xie, Xiaodong and Tomizuka, Masayoshi and Keutzer, Kurt and Zhang, Shanghang},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  year={2023}
+}
+```

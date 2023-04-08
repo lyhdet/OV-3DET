@@ -1,13 +1,17 @@
 # OV-3DET: Open-Vocabulary Point-Cloud Object Detection without 3D Annotation
 
-Accepted to CVPR2023. &emsp;
-[Paper](https://arxiv.org/abs/2304.00788) | BibTeX
+Accepted to CVPR2023. 
 
-###  Running OV-3DET
+[Paper](https://arxiv.org/abs/2304.00788) | [BibTeX](#citation)
+
+The goal of open-vocabulary detection is to identify novel objects based on arbitrary textual descriptions. In this paper, we address open-vocabulary 3D point-cloud detection by a dividing-and-conquering strategy, which involves: 1) developing a point-cloud detector that can learn a general representation for localizing various objects, and 2) connecting textual and point-cloud representations to enable the detector to classify novel object categories based on text prompting. Specifically, we resort to rich image pre-trained models, by which the point-cloud detector learns localizing objects under the supervision of predicted 2D bounding boxes from 2D pre-trained detectors. Moreover, we propose a novel de-biased triplet cross-modal contrastive learning to connect the modalities of image, point-cloud and text, thereby enabling the point-cloud detector to benefit from vision-language pre-trained models, i.e., CLIP. The novel use of image and vision-language pretrained models for point-cloud detectors allows for openvocabulary 3D object detection without the need for 3D annotations. 
+
+###  Training OV-3DET
 
 ------
 
-The phase 1 is to generate 3D pseudo box for training localization. You can generate pseudo-label of ScanNet by:
+#### Phase 1 
+&emsp;Generating 3D pseudo box for training localization. You can generate pseudo-label of ScanNet by:
 
 1. Prepare the [ScanNet](https://github.com/lyhdet/OV-3DET/blob/main/Prepare_ScanNet.md) dataset.
 2. Moving:  "***domo.py***, ***scannet_pseudo_make.sh***, ***scannet_util.py*** " to the ***[Detic](https://github.com/facebookresearch/Detic)*** codebase.
@@ -16,7 +20,8 @@ The phase 1 is to generate 3D pseudo box for training localization. You can gene
 
  &emsp;
 
-The phase 2 is to connect the embedding space of ***Text, Image and Point-cloud*** by running:  `bash scripts/scannet_quick_lr_7e-4.sh`
+#### Phase 2 
+&emsp;Connecting the embedding space of ***Text, Image and Point-cloud*** by running:  `bash scripts/scannet_quick_lr_7e-4.sh`
 
 
 &emsp;

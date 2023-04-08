@@ -8,7 +8,7 @@ Accepted to CVPR2023. &emsp;
 
 The phase 1 is to generate 3D pseudo box for training localization. You can generate pseudo-label of ScanNet by:
 
-1. Prepare the ScanNet dataset.
+1. Prepare the [ScanNet](https://github.com/lyhdet/OV-3DET/blob/main/Prepare_ScanNet.md) dataset.
 2. Moving:  "***domo.py***, ***scannet_pseudo_make.sh***, ***scannet_util.py*** " to the ***Detic*** codebase.
 3. Run the ***scannet_pseudo_make.sh***:    `bash scannet_pseudo_make.sh`
 4. Replace the ground truth box of the training set with pseudo label.

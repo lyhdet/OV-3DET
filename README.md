@@ -18,7 +18,7 @@ The phase 1 is to generate 3D pseudo box for training localization. You can gene
 The phase 2 is to connect the embedding space of ***Text, Image and Point-cloud*** by running:  `bash scripts/scannet_quick_lr_7e-4.sh`
 
 
-
+&emsp;
 ###  Evaluation
 
 ------
@@ -32,8 +32,6 @@ To evaluate OV-3DET, simply by running: `bash scripts/evaluate.sh`
 ------
 
 This codebase is modified base on ***3DETR*** [1], ***CLIP*** [2] and ***Detic*** [3], we sincerely appreciate their contributions!
-
-&emsp;
 
 [1] An end-to-end transformer model for 3d object detection. *ICCV*. 2021.
 

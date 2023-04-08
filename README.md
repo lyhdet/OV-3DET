@@ -26,15 +26,23 @@ See [installation instructions](Prepare_ScanNet.md).
 
 1. Prepare the [ScanNet](https://github.com/lyhdet/OV-3DET/blob/main/Prepare_ScanNet.md) dataset.
 2. Moving:  "***domo.py***, ***scannet_pseudo_make.sh***, ***scannet_util.py*** " to the ***[Detic](https://github.com/facebookresearch/Detic)*** codebase.
-3. Run the ***scannet_pseudo_make.sh***:    `bash scannet_pseudo_make.sh`
+3. Run the ***scannet_pseudo_make.sh***:
+~~~
+bash scannet_pseudo_make.sh
+~~~
 4. Replace the ground truth box of the training set with pseudo label.
 
 ### Phase 2 
-&emsp;Connecting the embedding space of ***Text, Image and Point-cloud*** by running:  `bash scripts/scannet_quick_lr_7e-4.sh`
-
+&emsp;Connecting the embedding space of ***Text, Image and Point-cloud*** by running:
+~~~
+bash scripts/scannet_quick_lr_7e-4.sh
+~~~
 
 ##  Test OV-3DET
-To evaluate OV-3DET, simply by running: `bash scripts/evaluate.sh`
+To evaluate OV-3DET, simply by running: 
+~~~
+bash scripts/evaluate.sh
+~~~
 
 ## Acknowledgement
 This codebase is modified base on ***3DETR*** [1], ***CLIP*** [2] and ***Detic*** [3], we sincerely appreciate their contributions!

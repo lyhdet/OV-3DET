@@ -38,7 +38,7 @@ bash scannet_pseudo_make.sh
 bash scripts/scannet_quick_lr_7e-4.sh
 ~~~
 
-##  Test OV-3DET
+##  Evaluate OV-3DET
 To evaluate OV-3DET, simply by running: 
 ~~~
 bash scripts/evaluate.sh

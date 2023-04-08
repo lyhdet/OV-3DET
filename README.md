@@ -39,11 +39,9 @@ To evaluate OV-3DET, simply by running: `bash scripts/evaluate.sh`
 ## Acknowledgement
 This codebase is modified base on ***3DETR*** [1], ***CLIP*** [2] and ***Detic*** [3], we sincerely appreciate their contributions!
 
-[1] An end-to-end transformer model for 3d object detection. *ICCV*. 2021.
-
-[2] Learning transferable visual models from natural language supervision. *ICML*. 2021.
-
-[3] Detecting twenty-thousand classes using image-level supervision. *ECCV*. 2022.
+>[1] An end-to-end transformer model for 3d object detection. *ICCV*. 2021.                                                                                             
+>[2] Learning transferable visual models from natural language supervision. *ICML*. 2021.                                                              
+>[3] Detecting twenty-thousand classes using image-level supervision. *ECCV*. 2022.                                                                                             
 
 ## Citation
 If you find this repository helpful, please consider citing our work:

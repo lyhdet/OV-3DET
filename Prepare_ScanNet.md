@@ -2,7 +2,7 @@
 
 
 
-Step 1: Download ScanNet here.
+Step 1: Download `scannet_frames_25k.zip` [here](https://github.com/ScanNet/ScanNet).
 
 Step 2: Generate ground truth bounding box by:
 

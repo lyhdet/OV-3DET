@@ -22,20 +22,15 @@ See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/Inst
 
 ##  Training OV-3DET
 ### Phase 1 
-&emsp;Generating 3D pseudo box for training localization. You can generate pseudo-label of ScanNet by:
-
-1. Prepare the [ScanNet](https://github.com/lyhdet/OV-3DET/blob/main/Phase%201/Prepare_ScanNet.md) dataset.
-2. Moving:  "***domo.py***, ***scannet_pseudo_make.sh***, ***scannet_util.py*** " to the ***[Detic](https://github.com/facebookresearch/Detic)*** codebase.
-3. Run the ***scannet_pseudo_make.sh***:
+Learn to Localize 3D Objects from 2D Pretrained Detector:
 ~~~
-bash scannet_pseudo_make.sh
+bash scannet_train_loc.sh
 ~~~
-4. Replace the ground truth box of the training set with pseudo label.
 
 ### Phase 2 
-&emsp;Connecting the embedding space of ***Text, Image and Point-cloud*** by running:
+Learn to Classify 3D Objects from 2D Pretrained vision-language Model:
 ~~~
-bash scripts/scannet_quick_lr_7e-4.sh
+bash scannet_train_dtcc.sh
 ~~~
 
 ##  Evaluate OV-3DET

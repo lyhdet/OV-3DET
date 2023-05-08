@@ -20,7 +20,7 @@
 See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/INSTALL.md).
 
 ## Dataset preparation
-See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md).
+See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md), or directly [download](comming/soon) the processed dataset.
 
 ##  Training OV-3DET
 ### Phase 1 
@@ -40,6 +40,43 @@ To evaluate OV-3DET, simply by running:
 ~~~
 bash scripts/evaluate.sh
 ~~~
+
+## Pretrained Models
+We provide the pretrained model weights for both "Phase 1" and "Phase 2".
+<table>
+<tr>
+<th>Dataset</th>
+<th>Phase</th>
+<th>Epochs</th>
+<th>Model weights</th>
+</tr>
+<tr>
+<td>ScanNet</td>
+<td>1</td>
+<td>400</td>
+<td><a href="comming soon">weights</a></td>
+</tr>
+<tr>
+<td>ScanNet</td>
+<td>2</td>
+<td>50</td>
+<td><a href="comming soon">weights</a></td>
+</tr>
+<tr>
+<td>SUN RGB-D</td>
+<td>1</td>
+<td>400</td>
+<td><a href="comming soon">weights</a></td>
+</tr>
+<tr>
+<td>SUN RGB-D</td>
+<td>2</td>
+<td>50</td>
+<td><a href="comming soon">weights</a></td>
+</tr>
+</table>
+
+
 
 ## Acknowledgement
 This codebase is modified base on ***3DETR*** [1], ***CLIP*** [2] and ***Detic*** [3], we sincerely appreciate their contributions!

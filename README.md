@@ -19,6 +19,8 @@
 ## Installation
 See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/INSTALL.md).
 
+## Dataset preparation
+See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md).
 
 ##  Training OV-3DET
 ### Phase 1 

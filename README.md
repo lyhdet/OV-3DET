@@ -26,7 +26,7 @@ See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Make
 ### Phase 1 
 Learn to Localize 3D Objects from 2D Pretrained Detector:
 ~~~
-bash scriptsscannet_train_loc.sh
+bash scripts/scannet_train_loc.sh
 ~~~
 
 ### Phase 2 

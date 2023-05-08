@@ -24,13 +24,13 @@ See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/Inst
 ### Phase 1 
 Learn to Localize 3D Objects from 2D Pretrained Detector:
 ~~~
-bash scannet_train_loc.sh
+bash scriptsscannet_train_loc.sh
 ~~~
 
 ### Phase 2 
 Learn to Classify 3D Objects from 2D Pretrained vision-language Model:
 ~~~
-bash scannet_train_dtcc.sh
+bash scripts/scannet_train_dtcc.sh
 ~~~
 
 ##  Evaluate OV-3DET

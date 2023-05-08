@@ -17,7 +17,7 @@
 
 
 ## Installation
-See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/Installation.md).
+See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/INSTALL.md).
 
 
 ##  Training OV-3DET

@@ -60,7 +60,7 @@ We provide the pretrained model weights for both "Phase 1" and "Phase 2".
 <td>ScanNet</td>
 <td>2</td>
 <td>50</td>
-<td><a href="comming soon">weights</a></td>
+<td><a href="https://pan.baidu.com/s/1hdtddyazILxZoFc8Vc2Idw?pwd=oesw">weights</a></td>
 </tr>
 <tr>
 <td>SUN RGB-D</td>

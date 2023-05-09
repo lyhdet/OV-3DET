@@ -54,7 +54,7 @@ We provide the pretrained model weights for both "Phase 1" and "Phase 2".
 <td>ScanNet</td>
 <td>1</td>
 <td>400</td>
-<td><a href="https://pan.baidu.com/s/1BJS1fJjnQnThsApzkZAPpg?pwd=khdt">weights</a></td>
+<td><a href="https://pan.baidu.com/s/1NxwuIsQZjHLA4Wj_7TUl_A?pwd=mdj0">weights</a></td>
 </tr>
 <tr>
 <td>ScanNet</td>

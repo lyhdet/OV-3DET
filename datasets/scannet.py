@@ -41,7 +41,7 @@ from utils.box_util import (
 
 
 MEAN_COLOR_RGB = np.array([0.5, 0.5, 0.5])  # sunrgbd color is in 0~1
-DATA_PATH_V1 = "/workspace/lyh/lab/OV-3DET/data/20230419/scannet_frames_25k_20cls_20230419" ## Replace with path to dataset
+DATA_PATH_V1 = "" ## Replace with path to dataset
 DATA_PATH_V2 = "" ## Not used in the codebase.
 
 

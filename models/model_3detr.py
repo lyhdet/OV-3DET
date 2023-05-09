@@ -35,7 +35,6 @@ from .DETR.matcher import build_matcher
 
 # clip model
 import sys
-sys.path.append('/workspace/lyh/lab/PointDet/PAMI_2022/CLIP')
 import clip
 
 from utils.nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls

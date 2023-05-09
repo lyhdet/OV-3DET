@@ -20,7 +20,7 @@
 See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/INSTALL.md).
 
 ## Dataset preparation
-See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md), or directly [download](comming/soon) the processed dataset.
+See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md), or directly [download](https://pan.baidu.com/s/14OZSQcUw_aiEVGuLPvwmPg?pwd=z1tz) the processed dataset.
 
 ##  Training OV-3DET
 ### Phase 1 

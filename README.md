@@ -2,11 +2,11 @@
 
 **OV-3DET**: An **O**pen **V**ocabulary **3**D **DET**ector. 
 
-[Paper](https://arxiv.org/abs/2304.00788) | [BibTeX](#citation)
+[Paper](https://openaccess.thecvf.com/content/CVPR2023/papers/Lu_Open-Vocabulary_Point-Cloud_Object_Detection_Without_3D_Annotation_CVPR_2023_paper.pdf) | [BibTeX](#citation)
 
  <p align="center"> <img src='Assets/overview.png' align="center" height="300px"> </p>
 
->[**OV-3DET: Open-Vocabulary Point-Cloud Object Detection without 3D Annotation**](https://arxiv.org/abs/2304.00788),                                                
+>[**OV-3DET: Open-Vocabulary Point-Cloud Object Detection without 3D Annotation**](https://openaccess.thecvf.com/content/CVPR2023/papers/Lu_Open-Vocabulary_Point-Cloud_Object_Detection_Without_3D_Annotation_CVPR_2023_paper.pdf),                                                
 >Yuheng Lu, Chenfeng Xu, Xiaobao Wei, Xiaodong Xie, Masayoshi Tomizuka, Kurt Keutzer and Shanghang Zhang,                                                               
 >Accepted to *CVPR2023*                                                 
  

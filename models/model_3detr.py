@@ -36,6 +36,7 @@ from .DETR.matcher import build_matcher
 # clip model
 import sys
 import clip
+import traceback
 
 from utils.nms import nms_2d_faster, nms_3d_faster, nms_3d_faster_samecls
 
@@ -111,6 +112,7 @@ class Model3DETR(nn.Module):
 
     def __init__(
         self,
+        args,
         pre_encoder,
         encoder,
         decoder,
@@ -122,6 +124,15 @@ class Model3DETR(nn.Module):
         num_queries=256,
     ):
         super().__init__()
+        if args.clip_model in ["ViT-L/14@336px"]:
+            clip_head_dim = 768
+        elif args.clip_model in ["ViT-B/32"]:
+            clip_head_dim = 512
+        else:
+            print("Error: No such clip model")
+            traceback.print_stack()
+            exit()
+
         self.pre_encoder = pre_encoder
         self.encoder = encoder
         if hasattr(self.encoder, "masking_radius"):
@@ -159,7 +170,7 @@ class Model3DETR(nn.Module):
         self.clip_header = GenericMLP(
             input_dim=decoder_dim,
             hidden_dims=[512,512],
-            output_dim=512,
+            output_dim=clip_head_dim,
             norm_fn_name="bn1d",
             activation="relu",
             use_conv=True,
@@ -459,8 +470,19 @@ def build_decoder(args):
 
 
 class DETR_3D_2D(nn.Module):
-	def __init__(self, pc_model, img_model):
+	def __init__(self, args, pc_model, img_model):
 		super().__init__()
+
+		if args.clip_model in ["ViT-L/14@336px"]:
+			self.patch_size = 336
+		elif args.clip_model in ["ViT-B/32"]:
+			self.patch_size = 224
+		else:
+			print("Error: No such clip model")
+			traceback.print_stack()
+			exit()
+
+
 		self.pc_model = pc_model
 		self.img_model = img_model
 		# self.img_clip_header = nn.Parameter(torch.empty(512, 512))
@@ -843,32 +865,65 @@ class DETR_3D_2D(nn.Module):
 		self.text_num = self.text_feats.shape[0] -1 
 		self.text_label = torch.arange(self.text_num, dtype=torch.int).to(device)
 
-		self.eval_text = ["A photo of toilet",
-                    "A photo of bed",
-                    "A photo of chair",
-                    "A photo of sofa",
-                    "A photo of dresser",
-                    "A photo of table",
-                    "A photo of cabinet",
-                    "A photo of bookshelf",
-                    "A photo of pillow",
-                    "A photo of sink",
-                    "A photo of bathtub",
-                    "A photo of refridgerator",
-                    "A photo of desk",
-                    "A photo of night stand",
-                    "A photo of counter",
-                    "A photo of door",
-                    "A photo of curtain",
-                    "A photo of box",
-                    "A photo of lamp",
-                    "A photo of bag",
-                    'A photo of ground',
-                    'A photo of wall',
-                    'A photo of floor',
-                    "An unclear image",
-                    "A photo of background",
-                    "There is no object in this image",]
+		if args.dataset_name in ["sunrgbd"]:
+			self.eval_text = ["A photo of chair",
+							"A photo of table",
+							"A photo of pillow",
+							"A photo of desk",
+							"A photo of bed",
+							"A photo of sofa",
+							"A photo of lamp",
+							"A photo of garbage_bin",
+							"A photo of cabinet",
+							"A photo of sink",
+							"A photo of night_stand",
+							"A photo of stool",
+							"A photo of bookshelf",
+							"A photo of dresser",
+							"A photo of toilet",
+							"A photo of fridge",
+							"A photo of microwave",
+							"A photo of counter",
+							"A photo of bathtub",
+							"A photo of scanner",
+							'A photo of ground',
+							'A photo of wall',
+							'A photo of floor',
+							"An unclear image",
+							"A photo of background",
+							"There is no object in this image",]
+		elif args.dataset_name in ["scannet"]:
+			self.eval_text = ["A photo of toilet",
+							"A photo of bed",
+							"A photo of chair",
+							"A photo of sofa",
+							"A photo of dresser",
+							"A photo of table",
+							"A photo of cabinet",
+							"A photo of bookshelf",
+							"A photo of pillow",
+							"A photo of sink",
+							"A photo of bathtub",
+							"A photo of refridgerator",
+							"A photo of desk",
+							"A photo of night stand",
+							"A photo of counter",
+							"A photo of door",
+							"A photo of curtain",
+							"A photo of box",
+							"A photo of lamp",
+							"A photo of bag",
+							'A photo of ground',
+							'A photo of wall',
+							'A photo of floor',
+							"An unclear image",
+							"A photo of background",
+							"There is no object in this image",]
+		else:
+			print("Error: No such dataset")
+			traceback.print_stack()
+			exit()
+
 		eval_text = clip.tokenize(self.eval_text).to(device)
 		self.eval_text_feats = self.batch_encode_text(eval_text)\
 		# self.text_feats = self.img_model.encode_text(text).detach()
@@ -1133,8 +1188,8 @@ class DETR_3D_2D(nn.Module):
 			rst_img[top_left[0]:down_right[0], top_left[1]:down_right[1], :] = img.clone()
 			return rst_img
 
-		img = resize(img, 224)
-		img = padding(img, [224,224])
+		img = resize(img, self.patch_size)
+		img = padding(img, [self.patch_size,self.patch_size])
 		return img
 
 	def img_denorm(self, img):
@@ -1664,9 +1719,9 @@ class DETR_3D_2D(nn.Module):
 			return pc_output
 	
 
-def build_img_encoder():
+def build_img_encoder(args):
     device = "cuda" if torch.cuda.is_available() else "cpu"
-    encoder, preprocess = clip.load("ViT-B/32", device=device)
+    encoder, preprocess = clip.load(args.clip_model, device=device)
     #encoder, preprocess = clip.load("RN50", device=device)
     return encoder
 
@@ -1675,6 +1730,7 @@ def build_3detr(args, dataset_config):
     encoder = build_encoder(args)
     decoder = build_decoder(args)
     pc_model = Model3DETR(
+        args,
         pre_encoder,
         encoder,
         decoder,
@@ -1687,9 +1743,9 @@ def build_3detr(args, dataset_config):
     output_processor = BoxProcessor(dataset_config)
     
     # Build Image Branch
-    img_model = build_img_encoder()
+    img_model = build_img_encoder(args)
     
-    model = DETR_3D_2D(pc_model=pc_model, img_model=img_model)
+    model = DETR_3D_2D(args, pc_model=pc_model, img_model=img_model)
 
     weight_dict = {'loss_ce': 1, 'loss_bbox': args.bbox_loss_coef}
     weight_dict['loss_giou'] = args.giou_loss_coef

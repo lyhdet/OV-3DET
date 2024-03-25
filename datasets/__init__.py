@@ -1,11 +1,11 @@
 # Copyright (c) Facebook, Inc. and its affiliates.
 from .scannet import ScannetDetectionDataset, ScannetDatasetConfig
-# from .sunrgbd import SunrgbdDetectionDataset, SunrgbdDatasetConfig
+from .sunrgbd import SunrgbdDetectionDataset, SunrgbdDatasetConfig
 
 
 DATASET_FUNCTIONS = {
     "scannet": [ScannetDetectionDataset, ScannetDatasetConfig],
-    # "sunrgbd": [SunrgbdDetectionDataset, SunrgbdDatasetConfig],
+    "sunrgbd": [SunrgbdDetectionDataset, SunrgbdDatasetConfig],
 }
 
 

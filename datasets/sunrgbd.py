@@ -41,11 +41,11 @@ from utils.box_util import (
 
 
 MEAN_COLOR_RGB = np.array([0.5, 0.5, 0.5])  # sunrgbd color is in 0~1
-DATA_PATH_V1 = "" ## Replace with path to ScanNet
+DATA_PATH_V1 = "" ## Replace with path to SUNRGBD
 DATA_PATH_V2 = "" ## Not used in the codebase.
 
 
-class ScannetDatasetConfig(object):
+class SunrgbdDatasetConfig(object):
     def __init__(self):
         self.num_semcls = 365
         self.num_angle_bin = 12
@@ -787,26 +787,27 @@ class ScannetDatasetConfig(object):
                             "flashlight": 364,}
 
         self.eval_type2class = {
-                            "toilet": 0,
-                            "bed": 1,
-                            "chair": 2,
-                            "sofa": 3,
-                            "dresser": 4,
-                            "table": 5,
-                            "cabinet": 6,
-                            "bookshelf": 7,
-                            "pillow": 8,
+                            "chair": 0,
+                            "table": 1,
+                            "pillow": 2,
+                            "desk": 3,
+                            "bed": 4,
+                            "sofa": 5,
+                            "lamp": 6,
+                            "garbage_bin": 7,
+                            "cabinet": 8,
                             "sink": 9,
-                            "bathtub": 10,
-                            "refridgerator": 11,
-                            "desk": 12,
-                            "night stand": 13,
-                            "counter": 14,
-                            "door": 15,
-                            "curtain": 16,
-                            "box": 17,
-                            "lamp": 18,
-                            "bag": 19,}
+                            "night_stand": 10,
+                            "stool": 11,
+                            "bookshelf": 12,
+                            "dresser": 13,
+                            "toilet": 14,
+                            "fridge": 15,
+                            "microwave": 16,
+                            "counter": 17,
+                            "bathtub": 18,
+                            "scanner": 19}
+                            
         self.eval_class2type = {self.eval_type2class[t]: t for t in self.eval_type2class}
 
     def angle2class(self, angle):
@@ -1095,7 +1096,7 @@ def img_preprocess(img):
 
 
 
-class ScannetDetectionDataset(Dataset):
+class SunrgbdDetectionDataset(Dataset):
     def __init__(
         self,
         dataset_config,
@@ -1124,7 +1125,7 @@ class ScannetDetectionDataset(Dataset):
         if split_set in ["train"]:
             self.scan_names = sorted(
                 list(
-                    set([os.path.basename(x)[0:19] for x in os.listdir(self.data_path) if ("intrinsic" not in x) and ("pc" in x)])
+                    set([os.path.basename(x)[:-7] for x in os.listdir(self.data_path) if ("intrinsic" not in x) and ("pc" in x)])
                 )
             )
 
@@ -1134,7 +1135,7 @@ class ScannetDetectionDataset(Dataset):
         elif split_set in ["val"]:
             self.scan_names = sorted(
                 list(
-                    set([os.path.basename(x)[0:19] for x in os.listdir(self.data_path) if ("intrinsic" not in x) and ("pc" in x)])
+                    set([os.path.basename(x)[:-7] for x in os.listdir(self.data_path) if ("intrinsic" not in x) and ("pc" in x)])
                 )
             )
             # self.scan_names = self.scan_names[0:len(self.scan_names):50]
@@ -1192,10 +1193,14 @@ class ScannetDetectionDataset(Dataset):
             else:
                 break
         
-        point_cloud = np.load(scan_path + "_pc.npy").astype(np.float32)  # Nx6
+        # point_cloud = np.load(scan_path + "_pc.npy").astype(np.float32)  # Nx6
+        point_cloud = np.load(scan_path + "_pc.npz")["pc"]  # Nx6
         bboxes = np.load(scan_path + "_bbox.npy")  # K,8
         pose = np.linalg.inv(load_matrix_from_txt(scan_path + "_pose.txt"))
-        image_intrinsic = load_matrix_from_txt(scan_path[:-7] + "_image_intrinsic.txt")
+        image_intrinsic = load_matrix_from_txt(scan_path + "_image_intrinsic.txt")
+
+        flip_pose = np.array([1,0,0,0,  0,0,-1,0, 0,1,0,0, 0,0,0,1]).reshape(4,4)
+        pose = flip_pose @ pose 
 
         # validate map point to image
         # img = cv2.imread(scan_path + ".jpg")

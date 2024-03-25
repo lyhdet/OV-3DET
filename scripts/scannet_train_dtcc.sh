@@ -4,6 +4,7 @@
 python main.py \
 --phase train_dtcc \
 --dataset_name scannet \
+--clip_model ViT-B/32 \
 --max_epoch 50 \
 --nqueries 128 \
 --base_lr 1e-4 \

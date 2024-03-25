@@ -3,8 +3,8 @@
 
 for num in {1..100}  
 do  
-	bash scripts/evaluate.sh
-	sleep 3600	
+	bash scripts/evaluate_sunrgbd.sh
+	sleep 60	
 done  
 
 echo "Series of numbers from 1 to 100."

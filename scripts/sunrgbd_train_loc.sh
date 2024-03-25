@@ -3,9 +3,9 @@
 
 python main.py \
 --phase train_loc \
---dataset_name scannet \
---clip_model ViT-B/32 \
---max_epoch 400 \
+--dataset_name sunrgbd \
+--clip_model ViT-L/14@336px \
+--max_epoch 800 \
 --nqueries 128 \
 --base_lr 4e-4 \
 --matcher_giou_cost 3 \
@@ -15,8 +15,8 @@ python main.py \
 --loss_giou_weight 0 \
 --loss_no_object_weight 0.1 \
 --save_separate_checkpoint_every_epoch -1 \
---checkpoint_dir outputs/ov_3det_scannet \
---ngpus 6 \
+--checkpoint_dir outputs/ov_3det_sunrgbd \
+--ngpus 4 \
 --dataset_num_workers 2 \
 --dist_url tcp://localhost:32456 \
---batchsize_per_gpu 4
+--batchsize_per_gpu 12

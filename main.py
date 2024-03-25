@@ -50,6 +50,10 @@ def make_args_parser():
         help="Name of the model",
         choices=["3detr"],
     )
+    parser.add_argument(
+        "--clip_model", required=True, type=str, choices=["ViT-L/14@336px", "ViT-B/32"]
+    )
+    
     ### Encoder
     parser.add_argument(
         "--enc_type", default="vanilla", choices=["masked", "maskedv2", "vanilla"]

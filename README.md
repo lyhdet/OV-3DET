@@ -20,25 +20,34 @@
 See [installation instructions](https://github.com/lyhdet/OV-3DET/blob/main/INSTALL.md).
 
 ## Dataset preparation
-See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md), or directly [download](https://pan.baidu.com/s/14OZSQcUw_aiEVGuLPvwmPg?pwd=z1tz) the processed dataset.
+See [dataset instructions](https://github.com/lyhdet/OV-3DET/blob/main/Data_Maker/README.md), or directly [download](https://pan.baidu.com/s/1sEf7_nz2jQqP4AdhX21QTA?pwd=0e57) the processed dataset.
 
 ##  Training OV-3DET
 ### Phase 1 
 Learn to Localize 3D Objects from 2D Pretrained Detector:
 ~~~
+# ScanNet
 bash scripts/scannet_train_loc.sh
+# SUN RGB-D
+bash scripts/sunrgbd_train_loc.sh
 ~~~
 
 ### Phase 2 
 Learn to Classify 3D Objects from 2D Pretrained vision-language Model:
 ~~~
+# ScanNet
 bash scripts/scannet_train_dtcc.sh
+# SUN RGB-D
+bash scripts/sunrgbd_train_dtcc.sh
 ~~~
 
 ##  Evaluate OV-3DET
 To evaluate OV-3DET, simply by running: 
 ~~~
-bash scripts/evaluate.sh
+# ScanNet
+bash scripts/evaluate_scannet.sh
+# SUN RGB-D
+bash scripts/evaluate_sunrgbd.sh
 ~~~
 
 ## Pretrained Models
@@ -66,13 +75,13 @@ We provide the pretrained model weights for both "Phase 1" and "Phase 2".
 <td>SUN RGB-D</td>
 <td>1</td>
 <td>400</td>
-<td><a href="comming soon">weights</a></td>
+<td><a href="https://pan.baidu.com/s/10blPxIgvKgRk5UkjNBZpCw?pwd=14wp">weights</a></td>
 </tr>
 <tr>
 <td>SUN RGB-D</td>
 <td>2</td>
 <td>50</td>
-<td><a href="comming soon">weights</a></td>
+<td><a href="https://pan.baidu.com/s/1ZswaKhN-NYxMzHqhLg_4eQ?pwd=31th">weights</a></td>
 </tr>
 </table>
 

@@ -17,7 +17,7 @@ sys.path.append(BASE_DIR)
 import numpy as np
 try:
     from plyfile import PlyData, PlyElement
-except:
+except ImportError:
     print("Please install the module 'plyfile' for PLY i/o, e.g.")
     print("pip install plyfile")
     sys.exit(-1)
